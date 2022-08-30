@@ -84,7 +84,7 @@ projectCards.addEventListener("click", async (e) => {
         });
         loadContent();
       } catch (error) {
-        console.log(error);
+        console.log(error.response.data);
       }
     }
   }

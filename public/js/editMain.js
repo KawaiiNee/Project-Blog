@@ -57,7 +57,7 @@ async function loadContent() {
     sourceCode.value = sourceCodeLink || "";
     setStatus.checked = isCompleted ? true : false;
   } catch (error) {
-    console.log(error);
+    console.log(error.response.data);
   }
 }
 

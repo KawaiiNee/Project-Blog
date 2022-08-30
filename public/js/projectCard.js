@@ -110,7 +110,7 @@ async function loadContent() {
     } else stepContainer.innerHTML = defaultContentMarkup();
     container.appendChild(stepContainer);
   } catch (error) {
-    console.log(error);
+    console.log(error.response.data);
   }
 }
 

@@ -50,7 +50,7 @@ async function loadContent() {
     textarea.textContent = text;
     title.textContent = stepTitle[stepIndex];
   } catch (error) {
-    console.log(error);
+    console.log(error.response.data);
   }
 }
 

@@ -162,7 +162,7 @@ itemContainer.addEventListener("click", async (e) => {
 
         notify("delete", `Step ${stepItemPosition + 1} has been deleted`);
       } catch (error) {
-        console.log(error);
+        console.log(error.response.data);
       }
     }
   }
@@ -214,7 +214,7 @@ deleteAll.onclick = async () => {
       // notify that all item's been deleted
       notify("delete", `All items deleted`);
     } catch (error) {
-      console.log(error);
+      console.log(error.response.data);
     }
   }
 };
@@ -236,7 +236,7 @@ async function loadContent() {
         .join("");
     } else itemContainer.innerHTML = "<p> Content currently empty :( </p>";
   } catch (error) {
-    console.log(error);
+    console.log(error.response.data);
   }
 }
 
