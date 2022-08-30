@@ -11,7 +11,7 @@ form.addEventListener("submit", async (e) => {
     sessionStorage.setItem("token", data.token);
     sessionStorage.setItem("username", data.username);
 
-    location.replace(document.referrer);
+    location.replace("/");
   } catch (error) {
     console.log(error);
   }
