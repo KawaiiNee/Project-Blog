@@ -30,7 +30,7 @@ const storage = multer.diskStorage({
         ? (await Card.findById(cardID)).name
         : "project_thumbnail";
 
-      const path = `./${uploadDir}/${folderName}`;
+      const path = `./public/${uploadDir}/${folderName}`;
       if (!fs.existsSync(path)) {
         fs.mkdirSync(path, { recursive: true });
       }
