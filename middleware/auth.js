@@ -9,20 +9,15 @@ const authAuthenticationMiddleware = async (req, res, next) => {
   }
 
   const token = headers.split(" ")[1];
-  let decoded;
+
   try {
-    decoded = jwt.verify(token, process.env.JWT_Secret);
+    const decoded = jwt.verify(token, process.env.JWT_Secret);
     const { name, admin } = decoded;
     req.user = { name, admin };
   } catch (error) {
     // if token invalid
     console.log(error);
-    throw new UnauthenticatedError(
-      `Not authorized to access this route ${jwt.verify(
-        token,
-        process.env.JWT_Secret
-      )}`
-    );
+    throw new UnauthenticatedError("Not authorized to access this route");
   }
   next();
 };
