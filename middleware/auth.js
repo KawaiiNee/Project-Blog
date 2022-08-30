@@ -17,7 +17,9 @@ const authAuthenticationMiddleware = async (req, res, next) => {
   } catch (error) {
     // if token invalid
     console.log(error);
-    throw new UnauthenticatedError("Not authorized to access this route");
+    throw new UnauthenticatedError(
+      `Not authorized to access this route token: ${token} || JWT_Secret: ${process.env.JWT_Secret}`
+    );
   }
   next();
 };
