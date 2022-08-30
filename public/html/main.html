@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project Blog</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+    />
+  </head>
+  <style>
+    body {
+      background-color: default;
+    }
+
+    .active-btn {
+      background-color: #ff8c00 !important;
+      font-weight: bold;
+      font-size: 0.9rem !important;
+      outline: none;
+      border: none;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    [data-content="project"]:hover > [data-content="image"] {
+      transition: filter 150ms ease-in-out;
+      filter: brightness(50%) grayscale(25%);
+    }
+  </style>
+  <script defer src="../js/projects.js"></script>
+  <body>
+    <!-- navbar -->
+    <header>
+      <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand mb" href="/home">
+            <img
+              class="img-fluid"
+              src="../images/logo.png"
+              alt=""
+              style="width: 32px; height: 32px"
+            />
+            Mush</a
+          >
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#"
+                  >Projects</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Referrals</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Dropdown
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link">Notes</a>
+              </li>
+            </ul>
+            <!-- Button trigger modal -->
+            <button
+              type="button"
+              class="btn rounded mx-2 active-btn d-none"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+              data-btn="post-project"
+            >
+              POST
+            </button>
+            <!-- POST Modal -->
+            <div
+              class="modal fade"
+              id="exampleModal"
+              tabindex="-1"
+              aria-labelledby="exampleModalLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog">
+                <div class="modal-content shadow px-2">
+                  <div class="modal-header">
+                    <h4 class="modal-title fw-bold" id="exampleModalLabel">
+                      Post a new project card
+                    </h4>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <form
+                    action="/post-project-card"
+                    data-btn="postProject"
+                    enctype="multipart/form-data"
+                    method="POST"
+                  >
+                    <div class="modal-body">
+                      <div class="mb-3 row">
+                        <label
+                          for="project-title"
+                          class="col-sm-2 col-form-label"
+                          >Title</label
+                        >
+                        <div class="col-12">
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="project-title"
+                            maxlength="36"
+                            name="title"
+                            required
+                          />
+                        </div>
+                      </div>
+                      <div class="mb-3 row">
+                        <label
+                          for="project-thumbnail"
+                          class="col-sm-2 col-form-label"
+                          >Thumbnail</label
+                        >
+                        <div class="col-12">
+                          <input
+                            type="file"
+                            id="project-thumbnail"
+                            name="image"
+                          />
+                        </div>
+                      </div>
+                      <div class="mb-3 row">
+                        <label for="description" class="col-sm-2 col-form-label"
+                          >Description</label
+                        >
+                        <div class="col-12">
+                          <textarea
+                            class="form-control"
+                            id="description"
+                            maxlength="255"
+                            style="height: 140px; resize: none"
+                            name="description"
+                            required
+                          ></textarea>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal"
+                      >
+                        Close
+                      </button>
+                      <button type="submit" class="btn btn-primary active-btn">
+                        LGTM!
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <form class="d-flex" role="search" data-form="search">
+              <input
+                class="form-control me-2"
+                type="search"
+                placeholder="Search for a project"
+                aria-label="Search"
+                name="name"
+              />
+              <button class="btn btn-outline-info" type="submit">Search</button>
+            </form>
+            <a href="/login" class="mx-2"
+              ><button class="btn btn-dark px-3" data-btn="sign-in">
+                Sign in
+              </button></a
+            >
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div class="container mb-5">
+        <div class="row my-2">
+          <div
+            class="col text-center display-4 fw-bold"
+            data-greet="greet"
+            data-name="username"
+          >
+            <!-- Hello Sora! -->
+          </div>
+        </div>
+        <!-- main content -->
+        <div class="row mt-4 gy-4">
+          <div class="col-lg-5 col-xl-5 col-xxl-5 col-12">
+            <!-- profile -->
+            <!-- border-0 on div::card if you wanna remove the profile border -->
+            <div class="card px-1 py-3">
+              <div class="row g-0 align-items-center justify-content-center">
+                <div class="col-4 col">
+                  <img
+                    src="../images/profile-logo.png"
+                    class="img-fluid rounded-start"
+                    alt="..."
+                  />
+                </div>
+                <div class="col-md-8">
+                  <div
+                    class="card-body text-center text-xxl-start text-xl-start text-lg-start text-md-start"
+                  >
+                    <h4
+                      class="card-title"
+                      data-profile="side-profile"
+                      data-name="username"
+                    >
+                      Sora Kasugano
+                    </h4>
+                    <p class="card-text">Japangasinan</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- status -->
+            <div class="card px-4 py-2">
+              <!-- projects completed -->
+              <div class="card-header h4 text-center">Status</div>
+              <div class="card-body">
+                <div
+                  class="h6 card-title"
+                  data-progress="completed-project-status"
+                >
+                  Completed Projects: ?/?
+                </div>
+                <div class="progress">
+                  <div
+                    class="progress-bar bg-info"
+                    role="progressbar"
+                    style="width: 0%"
+                    aria-valuenow="50"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                    data-progress="completed-projects"
+                  ></div>
+                </div>
+                <div
+                  class="h6 card-title"
+                  data-progress="pending-project-status"
+                >
+                  Pending Projects: ?/?
+                </div>
+                <div class="progress">
+                  <div
+                    class="progress-bar bg-warning"
+                    role="progressbar"
+                    style="width: 0%"
+                    aria-valuenow="50"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                    data-progress="pending-projects"
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-7 col-xl-7 col-xxl-7 col-12">
+            <!-- tabs -->
+            <div>
+              <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <button
+                    class="nav-link active"
+                    id="project-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#project-tab-pane"
+                    type="button"
+                    role="tab"
+                    aria-controls="project-tab-pane"
+                    aria-selected="true"
+                  >
+                    Projects
+                  </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button
+                    class="nav-link"
+                    id="profile-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#profile-tab-pane"
+                    type="button"
+                    role="tab"
+                    aria-controls="profile-tab-pane"
+                    aria-selected="false"
+                  >
+                    Profile
+                  </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button
+                    class="nav-link"
+                    id="contact-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#contact-tab-pane"
+                    type="button"
+                    role="tab"
+                    aria-controls="contact-tab-pane"
+                    aria-selected="false"
+                  >
+                    Contact
+                  </button>
+                </li>
+              </ul>
+              <!-- project cards -->
+              <div class="tab-content py-2 px-4" id="myTabContent">
+                <div
+                  class="tab-pane fade show active"
+                  id="project-tab-pane"
+                  role="tabpanel"
+                  aria-labelledby="project-tab"
+                  tabindex="0"
+                >
+                  <div class="row gy-4 project-cards d-flex m-auto">
+                    <!-- js -->
+                  </div>
+                </div>
+                <div
+                  class="tab-pane fade"
+                  id="profile-tab-pane"
+                  role="tabpanel"
+                  aria-labelledby="profile-tab"
+                  tabindex="0"
+                >
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                  Veniam harum, numquam fuga quisquam iure ut maxime voluptatem
+                  voluptatum quibusdam corporis deleniti laudantium, provident
+                  est. Quasi, laborum nisi beatae voluptates laboriosam tempore
+                  nesciunt enim sunt explicabo consequatur illo cum dolorum,
+                  dicta quidem expedita reiciendis, alias eaque. Ut sapiente
+                  dolore magnam iusto.
+                </div>
+                <div
+                  class="tab-pane fade"
+                  id="contact-tab-pane"
+                  role="tabpanel"
+                  aria-labelledby="contact-tab"
+                  tabindex="0"
+                >
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                  Veniam harum, numquam fuga quisquam iure ut maxime voluptatem
+                  voluptatum quibusdam corporis deleniti laudantium, provident
+                  est. Quasi, laborum nisi beatae voluptates laboriosam tempore
+                  nesciunt enim sunt explicabo consequatur illo cum dolorum,
+                  dicta quidem expedita reiciendis, alias eaque. Ut sapiente
+                  dolore magnam iusto.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="footer bg-dark text-white">
+      <div class="container p-4">
+        <span class="text-muted">Footer placeholder</span>
+      </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"
+      integrity="sha512-xIPqqrfvUAc/Cspuj7Bq0UtHNo/5qkdyngx6Vwt+tmbvTLDszzXM0G6c91LXmGrRx8KEPulT+AfOOez+TeVylg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script>
+      document
+        .querySelectorAll(`[data-name="username"]`)
+        .forEach((e) => (e.style.textTransform = "capitalize"));
+    </script>
+  </body>
+</html>

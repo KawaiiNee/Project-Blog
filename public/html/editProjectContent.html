@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project Blog</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+    />
+    <script defer src="../js/editProjectContent.js"></script>
+  </head>
+  <style>
+    .active-btn {
+      background-color: #ff8c00 !important;
+      font-weight: bold;
+      outline: none;
+      border: none;
+    }
+  </style>
+  <body>
+    <!-- navbar -->
+    <header>
+      <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand mb" href="/home">
+            <img
+              class="img-fluid"
+              src="../images/logo.png"
+              alt=""
+              style="width: 32px; height: 32px"
+            />
+            Mush</a
+          >
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#"
+                  >Projects</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Referrals</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Dropdown
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link">Notes</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div class="container">
+        <div
+          class="p-4 border border-5 my-2 mt-4 overflow-auto"
+          style="height: 500px; position: relative"
+        >
+          <h3 class="mx-3" data-header="title">Step ?</h3>
+          <hr />
+          <form
+            class="form-floating"
+            data-form="update-content"
+            enctype="multipart/form-data"
+            method="POST"
+          >
+            <textarea
+              class="form-control border-0 p-5"
+              name="stepDescriptionContent"
+              placeholder="Write something"
+              id="contentEditing"
+              style="height: 250px; resize: none"
+            ></textarea>
+            <label for="contentEditing" class="fw-normal"
+              >Write some content...</label
+            >
+            <!-- BUTTONS & Adding photos -->
+            <div
+              class="d-flex justify-content-between align-items-center my-3 mx-5"
+            >
+              <!-- add photo -->
+
+              <div>
+                <div>
+                  <label for="photo" class="fw-bolder h5">Add photo</label>
+                </div>
+                <input
+                  type="file"
+                  id="photo"
+                  name="image"
+                  data-btn="add-photo"
+                />
+              </div>
+              <!-- update -->
+              <button class="btn active-btn mx-3" type="submit">Update</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- back btn -->
+        <div class="d-flex justify-content-end">
+          <button class="btn btn-dark mx-3" data-btn="back">Back</button>
+        </div>
+      </div>
+      <!-- UPDATE NOTIFY TOAST -->
+      <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div
+          id="liveToast"
+          class="toast"
+          role="alert"
+          aria-live="assertive"
+          aria-atomic="true"
+        >
+          <div class="toast-header">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-hand-thumbs-up-fill me-2 text-warning"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a9.84 9.84 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733.058.119.103.242.138.363.077.27.113.567.113.856 0 .289-.036.586-.113.856-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.163 3.163 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16H8c-.605 0-1.07-.081-1.466-.218a4.82 4.82 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z"
+              />
+            </svg>
+            <strong class="me-auto text-warning">Item Updated</strong>
+            <small>...</small>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="toast"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="toast-body">
+            Step content has been successfully updated!
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"
+      integrity="sha512-xIPqqrfvUAc/Cspuj7Bq0UtHNo/5qkdyngx6Vwt+tmbvTLDszzXM0G6c91LXmGrRx8KEPulT+AfOOez+TeVylg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </body>
+</html>

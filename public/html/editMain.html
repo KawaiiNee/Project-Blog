@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project Blog</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+    />
+  </head>
+  <style>
+    .active-btn {
+      font-weight: 600 !important;
+      font-size: 0.9rem !important;
+    }
+  </style>
+  <script defer src="../js/editMain.js"></script>
+  <body>
+    <!-- navbar -->
+    <header>
+      <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand mb" href="/home">
+            <img
+              class="img-fluid"
+              src="../images/logo.png"
+              alt=""
+              style="width: 32px; height: 32px"
+            />
+            Mush</a
+          >
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#"
+                  >Projects</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Referrals</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Dropdown
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link">Notes</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div class="container position-relative">
+        <div
+          class="p-4 border border-5 my-2 mt-4 overflow-auto"
+          style="height: 500px"
+        >
+          <div class="d-flex justify-content-between">
+            <h3>Project Content</h3>
+            <!-- dropdown section -->
+            <div class="dropdown">
+              <button
+                class="btn btn-secondary dropdown-toggle"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                data-edit="dropdown"
+              >
+                Main
+              </button>
+              <ul class="dropdown-menu dropdown-menu-dark">
+                <li>
+                  <h6 class="dropdown-header">Project Section</h6>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../html/editMain.html"
+                    data-btn="main"
+                    >Main</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../html/editContent.html"
+                    data-btn="content"
+                    >Content</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="py-4 px-2">
+            <form
+              data-form="edit-main"
+              class="form-floating"
+              enctype="multipart/form-data"
+              method="POST"
+            >
+              <div class="mb-3 row g-3">
+                <div class="col-md-6">
+                  <label for="editTitle" class="form-label"
+                    >Project Title</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="editTitle"
+                    name="editTitle"
+                    aria-describedby="titleEdit"
+                    autocomplete="off"
+                    maxlength="36"
+                    required
+                  />
+                  <div id="titleEdit" class="form-text">
+                    The project title can have a maximum of 36 characters
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <label for="photo" class="form-label">Thumbnail</label>
+                  <input
+                    type="file"
+                    id="photo"
+                    name="image"
+                    aria-describedby="thumbnailEdit"
+                    data-btn="add-photo"
+                    class="d-block"
+                  />
+                  <div id="thumbnailEdit" class="form-text">
+                    Choose a photo to replace
+                  </div>
+                </div>
+              </div>
+              <div class="mb-3 row">
+                <div class="col-md-7">
+                  <label for="editDescription" class="form-label"
+                    >Description</label
+                  >
+                  <textarea
+                    class="form-control"
+                    id="editDescription"
+                    name="editDescription"
+                    aria-describedby="descriptionEdit"
+                    style="height: 120px; resize: none"
+                    maxlength="255"
+                    required
+                  ></textarea>
+                  <div id="descriptionEdit" class="form-text">
+                    The project description can have a maximum of 255 characters
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="row h-100">
+                    <div class="col-12">
+                      <label for="status" class="form-label">Status</label>
+                      <div class="input-group-text">
+                        <input
+                          class="form-check-input me-2"
+                          type="checkbox"
+                          aria-label="Checkbox for project status"
+                          id="status"
+                          name="status"
+                          value="completed"
+                          data-btn="set-status"
+                        />
+                        Completed
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <label for="sourceCode" class="form-label"
+                        >Source code link</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="https://example-url.com/"
+                        id="sourceCode"
+                        name="sourceCode"
+                        autocomplete="off"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary mx-2">Update</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- cancel -->
+        <div class="d-flex justify-content-end">
+          <a href="/home" class="text-reset text-decoration-none">
+            <button class="btn btn-dark mx-3">Cancel</button>
+          </a>
+        </div>
+      </div>
+
+      <!-- UPDATE TOAST -->
+      <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div
+          id="liveToast"
+          class="toast"
+          role="alert"
+          aria-live="assertive"
+          aria-atomic="true"
+        >
+          <div class="toast-header">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-bookmark-check-fill me-2 text-warning"
+              viewBox="0 0 16 16"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zm8.854-9.646a.5.5 0 0 0-.708-.708L7.5 7.793 6.354 6.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"
+              />
+            </svg>
+            <strong class="me-auto text-warning">Updated Successfully </strong>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="toast"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="toast-body">Changes has been applied</div>
+        </div>
+      </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"
+      integrity="sha512-xIPqqrfvUAc/Cspuj7Bq0UtHNo/5qkdyngx6Vwt+tmbvTLDszzXM0G6c91LXmGrRx8KEPulT+AfOOez+TeVylg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </body>
+</html>
