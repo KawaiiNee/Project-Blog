@@ -250,6 +250,7 @@ const login = async (req, res) => {
 };
 
 const loginInfo = (req, res) => {
+  console.log("server first console");
   const { username } = req.body;
   // JWT TOKEN
   const token = jwt.sign(
@@ -261,6 +262,7 @@ const loginInfo = (req, res) => {
     // token life span
     { expiresIn: "1d" }
   );
+  console.log("server second console");
 
   res.status(200).json({ token, username: username });
 };
