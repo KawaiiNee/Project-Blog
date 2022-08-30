@@ -9,6 +9,10 @@ const connectDB = require("./db/connect");
 const notFound = require("./middleware/notFound");
 const errorHandlerMiddleware = require("./middleware/error-handler");
 
+// extra security packages
+const xss = require("xss-clean");
+app.use(xss());
+
 const task = require("./routes/task");
 // incoming html
 app.use(express.urlencoded({ limit: "10mb", extended: false }));
