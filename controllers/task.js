@@ -257,7 +257,7 @@ const loginInfo = (req, res) => {
       name: username,
       admin: true,
     },
-    process.env.JWT_SECRET,
+    "process.env.JWT_SECRET",
     // token life span
     { expiresIn: "1d" }
   );
