@@ -90,7 +90,7 @@ async function addStepToDB(title, description, image, descriptionContent) {
 
     notify("success", "Item added successfully");
   } catch (error) {
-    console.log(error);
+    console.log(error.response.data);
   }
 }
 
