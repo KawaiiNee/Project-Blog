@@ -11,15 +11,13 @@ const authAuthenticationMiddleware = async (req, res, next) => {
   const token = headers.split(" ")[1];
 
   try {
-    const decoded = jwt.verify(token, process.env.JWT_Secret);
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
     const { name, admin } = decoded;
     req.user = { name, admin };
   } catch (error) {
     // if token invalid
     console.log(error);
-    throw new UnauthenticatedError(
-      `Not authorized to access this route token: ${token} || JWT_Secret: ${process.env.JWT_Secret}`
-    );
+    throw new UnauthenticatedError(`Not authorized to access this route`);
   }
   next();
 };
